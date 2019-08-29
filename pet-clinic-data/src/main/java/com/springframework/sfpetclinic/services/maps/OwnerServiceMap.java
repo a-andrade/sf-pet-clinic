@@ -2,9 +2,11 @@ package com.springframework.sfpetclinic.services.maps;
 
 import com.springframework.sfpetclinic.models.Owner;
 import com.springframework.sfpetclinic.services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long>  implements OwnerService {
 
 
