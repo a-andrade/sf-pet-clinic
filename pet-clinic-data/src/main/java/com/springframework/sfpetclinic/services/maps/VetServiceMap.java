@@ -1,11 +1,11 @@
 package com.springframework.sfpetclinic.services.maps;
 
 import com.springframework.sfpetclinic.models.Vet;
-import com.springframework.sfpetclinic.services.CrudService;
+import com.springframework.sfpetclinic.services.VetService;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet, Long>  implements CrudService<Vet, Long> {
+public class VetServiceMap extends AbstractMapService<Vet, Long>  implements VetService {
 
 
     @Override
