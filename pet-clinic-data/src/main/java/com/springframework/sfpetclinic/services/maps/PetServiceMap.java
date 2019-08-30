@@ -2,12 +2,13 @@ package com.springframework.sfpetclinic.services.maps;
 
 import com.springframework.sfpetclinic.models.Pet;
 import com.springframework.sfpetclinic.services.PetService;
+import com.springframework.sfpetclinic.services.maps.AbstractMapService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class PetServiceMap extends AbstractMapService<Pet, Long>  implements PetService {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
 
     @Override
@@ -21,13 +22,13 @@ public class PetServiceMap extends AbstractMapService<Pet, Long>  implements Pet
     }
 
     @Override
-    public void delete(Pet object) {
-        super.delete(object);
+    public Pet save(Pet object) {
+        return super.save(object);
     }
 
     @Override
-    public Pet save(Pet object) {
-        return super.save(object.getId(), object);
+    public void delete(Pet object) {
+        super.delete(object);
     }
 
     @Override
