@@ -3,7 +3,7 @@ package com.springframework.sfpetclinic.models;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
-@MappedSuperclass
+@MappedSuperclass // dont need to add this class to the database
 public class Person extends BaseEntity {
 
     @Column(name = "first_name")
