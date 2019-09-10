@@ -36,51 +36,39 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void loadData() {
+        // adding petTypes to bootstrap
+
+        PetType dog = new PetType();
+        dog.setName("Dog");
+        PetType savedDogPetType = petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        cat.setName("Cat");
+        PetType savedCatPetType = petTypeService.save(cat);
+
+        System.out.println("Loaded petTypes...");
+
+        // adding specialties to vets
+
+        Specialty radiology = new Specialty();
+        radiology.setDescription("Radiology");
+        Specialty savedRadiology = specialtyService.save(radiology);
+
+        Specialty surgery = new Specialty();
+        radiology.setDescription("Surgery");
+        Specialty savedSurgery = specialtyService.save(surgery);
+
+        Specialty dentistry = new Specialty();
+        radiology.setDescription("Dentistry");
+        Specialty savedDentistry = specialtyService.save(dentistry);
+
+        System.out.println("Loaded specialties...");
+
         // adding owners to bootstrap
 
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
-
-        //ownerService.save(owner1);
-
-        Owner owner2 = new Owner();
-        owner2.setFirstName("Fionna");
-        owner2.setLastName("Glenanne");
-
-        //ownerService.save(owner2);
-
-        System.out.println("Loaded owners...");
-
-        // adding vets to bootstrap
-
-        Vet vet1 = new Vet();
-        vet1.setFirstName("Sam");
-        vet1.setLastName("Axe");
-
-        //vetService.save(vet1);
-
-        Vet vet2 = new Vet();
-        vet2.setFirstName("Jessie");
-        vet2.setLastName("Porter");
-
-        //vetService.save(vet2);
-
-        System.out.println("Loaded vets...");
-
-        // adding petTypes to bootstrap
-
-        PetType dog = new PetType();
-        dog.setName("Dog");
-
-        PetType savedDogPetType = petTypeService.save(dog);
-
-        PetType cat = new PetType();
-        cat.setName("Cat");
-
-        PetType savedCatPetType = petTypeService.save(cat);
-
-        System.out.println("Loaded petTypes...");
 
         // adding owners contact info to bootstrap
 
@@ -88,16 +76,7 @@ public class DataLoader implements CommandLineRunner {
         owner1.setCity("Miami");
         owner1.setTelephone("123-123-1234");
 
-        owner2.setAddress("123 Brickerel");
-        owner2.setCity("Miami");
-        owner2.setTelephone("123-123-1234");
-
-        //ownerService.save(owner1);
-        //ownerService.save(owner2);
-
-        System.out.println("Loaded contact info...");
-
-        // adding pet and petType to bootstrap
+        // adding pet to bootstrap
 
         Pet mikesPet = new Pet();
         mikesPet.setPetType(savedDogPetType);
@@ -106,6 +85,26 @@ public class DataLoader implements CommandLineRunner {
         mikesPet.setName("Rosco");
         owner1.getPets().add(mikesPet);
 
+        ownerService.save(owner1);
+
+        // adding owners to bootstrap
+
+        Owner owner2 = new Owner();
+        owner2.setFirstName("Fionna");
+        owner2.setLastName("Glenanne");
+
+        // adding owners contact info to bootstrap
+
+        owner2.setAddress("123 Brickerel");
+        owner2.setCity("Miami");
+        owner2.setTelephone("123-123-1234");
+
+        System.out.println("Loaded owners...");
+
+        System.out.println("Loaded contact info...");
+
+        // adding pet to bootstrap
+
         Pet fionasPet = new Pet();
         fionasPet.setPetType(savedCatPetType);
         fionasPet.setOwner(owner2);
@@ -113,33 +112,11 @@ public class DataLoader implements CommandLineRunner {
         fionasPet.setName("Luna");
         owner2.getPets().add(fionasPet);
 
-        ownerService.save(owner1);
         ownerService.save(owner2);
 
         System.out.println("Loaded pets...");
 
-        // adding specialties to vets
-
-        Specialty radiology = new Specialty();
-        radiology.setDescription("Radiology");
-        Specialty savedRadiology = specialtyService.save(radiology);
-        vet1.getSpecialties().add(savedRadiology);
-
-        Specialty surgery = new Specialty();
-        radiology.setDescription("Surgery");
-        Specialty savedSurgery = specialtyService.save(surgery);
-        vet2.getSpecialties().add(savedSurgery);
-
-        Specialty dentistry = new Specialty();
-        radiology.setDescription("Dentistry");
-        Specialty savedDentistry = specialtyService.save(dentistry);
-
-        vetService.save(vet1);
-        vetService.save(vet2);
-
-        System.out.println("Loaded specialties...");
-
-        // adding visits
+        // adding visits to bootstrap
 
         Visit catVisit = new Visit();
         catVisit.setPet(fionasPet);
@@ -149,5 +126,23 @@ public class DataLoader implements CommandLineRunner {
         visitService.save(catVisit);
 
         System.out.println("Loaded visits...");
+
+        // adding vets to bootstrap
+
+        Vet vet1 = new Vet();
+        vet1.setFirstName("Sam");
+        vet1.setLastName("Axe");
+        vet1.getSpecialties().add(savedRadiology);
+
+        vetService.save(vet1);
+
+        Vet vet2 = new Vet();
+        vet2.setFirstName("Jessie");
+        vet2.setLastName("Porter");
+        vet2.getSpecialties().add(savedSurgery);
+
+        vetService.save(vet2);
+
+        System.out.println("Loaded vets...");
     }
 }
