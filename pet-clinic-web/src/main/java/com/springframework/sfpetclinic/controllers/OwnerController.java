@@ -26,8 +26,8 @@ public class OwnerController {
         return "notimplemented";
     }
 
-    @RequestMapping("/oups")
+    /*@RequestMapping("/oups")
     public String errorHandler() {
         return "notimplemented";
-    }
+    }*/
 }
