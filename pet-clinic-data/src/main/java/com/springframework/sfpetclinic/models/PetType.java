@@ -1,6 +1,9 @@
 package com.springframework.sfpetclinic.models;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,12 +19,6 @@ public class PetType extends BaseEntity {
 
     @Column(name = "name")
     private String name;
-
-    @Builder
-    public PetType(Long id, String name) {
-        super(id);
-        this.name = name;
-    }
 
     @Override
     public String toString() {
